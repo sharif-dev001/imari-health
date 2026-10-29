@@ -19,8 +19,9 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, accuracy_score
 
-DATA_PATH = "../data/processed/training_data.csv"
-MODEL_DIR = "models"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data", "processed", "training_data.csv")
+MODEL_DIR = os.path.join(BASE_DIR, "models")
 RANDOM_STATE = 42
 
 CATEGORICAL = ["gender", "area", "age_group", "education", "income_source",
