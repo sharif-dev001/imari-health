@@ -1,0 +1,44 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of households",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "Phone Ownership per person aged 10 or older",
+    "Non-poor": 55.2,
+    "Poor": 34.0,
+    "All": 48.9
+  },
+  {
+    "Unnamed: 0": "Own a Radio",
+    "Non-poor": 67.8,
+    "Poor": 42.7,
+    "All": 60.3
+  },
+  {
+    "Unnamed: 0": "Own a TV",
+    "Non-poor": 27.5,
+    "Poor": 3.6,
+    "All": 20.3
+  },
+  {
+    "Unnamed: 0": "Own a computer",
+    "Non-poor": 4.2,
+    "Poor": 0.1,
+    "All": 3.0
+  },
+  {
+    "Unnamed: 0": "Own a bicycle",
+    "Non-poor": 22.1,
+    "Poor": 11.6,
+    "All": 18.9
+  },
+  {
+    "Unnamed: 0": "Source: EICV7.",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  }
+]

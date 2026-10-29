@@ -1,0 +1,93 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of individuals",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  },
+  {
+    "Unnamed: 0": "Gender ",
+    "Non-poor": "",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  },
+  {
+    "Unnamed: 0": "  Male",
+    "Non-poor": 80.7,
+    "Poor": 77.8,
+    "All": 79.9,
+    "Poverty rate": 23.3
+  },
+  {
+    "Unnamed: 0": "  Female",
+    "Non-poor": 19.3,
+    "Poor": 22.2,
+    "All": 20.1,
+    "Poverty rate": 23.5
+  },
+  {
+    "Unnamed: 0": "Age categories (years)",
+    "Non-poor": "",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  },
+  {
+    "Unnamed: 0": "  17-25",
+    "Non-poor": 3.8,
+    "Poor": 2.5,
+    "All": 3.5,
+    "Poverty rate": "16.6*"
+  },
+  {
+    "Unnamed: 0": "  26-35",
+    "Non-poor": 21.5,
+    "Poor": 14.5,
+    "All": 19.6,
+    "Poverty rate": "17.6*"
+  },
+  {
+    "Unnamed: 0": "  36-45",
+    "Non-poor": 30.9,
+    "Poor": 34.9,
+    "All": 32.0,
+    "Poverty rate": 27.5
+  },
+  {
+    "Unnamed: 0": "  46-55",
+    "Non-poor": 19.4,
+    "Poor": 23.4,
+    "All": 20.5,
+    "Poverty rate": 28.2
+  },
+  {
+    "Unnamed: 0": "  56-65",
+    "Non-poor": 13.7,
+    "Poor": 14.7,
+    "All": 14.0,
+    "Poverty rate": 24.8
+  },
+  {
+    "Unnamed: 0": "  66 and above",
+    "Non-poor": 10.7,
+    "Poor": 10.0,
+    "All": 10.5,
+    "Poverty rate": "21.2*"
+  },
+  {
+    "Unnamed: 0": "  Total",
+    "Non-poor": 100,
+    "Poor": 100.0,
+    "All": 100.0,
+    "Poverty rate": 27.4
+  },
+  {
+    "Unnamed: 0": "Source: EICV7 * = statistically significantly different from the national rate at the 95% level or higher.",
+    "Non-poor": "",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  }
+]

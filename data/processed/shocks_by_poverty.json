@@ -1,0 +1,68 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of households",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "A least one severe shock/unusual situation",
+    "Non-poor": 35.6,
+    "Poor": 41.0,
+    "All": 37.1
+  },
+  {
+    "Unnamed: 0": "Categories of main shock faced:",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "  Environmental shocks (flood, downpour, drought, landslide)",
+    "Non-poor": 30.6,
+    "Poor": 30.6,
+    "All": 30.6
+  },
+  {
+    "Unnamed: 0": "  Farm-related (High input cost, livestock disease, etc.)",
+    "Non-poor": 4.4,
+    "Poor": 3.8,
+    "All": 4.2
+  },
+  {
+    "Unnamed: 0": "  High food price",
+    "Non-poor": 22,
+    "Poor": 20.5,
+    "All": 21.5
+  },
+  {
+    "Unnamed: 0": "  Loss/reduced Income from employment",
+    "Non-poor": 8.4,
+    "Poor": 8.6,
+    "All": 8.5
+  },
+  {
+    "Unnamed: 0": "  Health Problem (Including death)",
+    "Non-poor": 26.7,
+    "Poor": 27.5,
+    "All": 27.0
+  },
+  {
+    "Unnamed: 0": "  Other",
+    "Non-poor": 7.8,
+    "Poor": 9.0,
+    "All": 8.2
+  },
+  {
+    "Unnamed: 0": "  Total",
+    "Non-poor": 100,
+    "Poor": 100.0,
+    "All": 100.0
+  },
+  {
+    "Unnamed: 0": "Source: EICV7.  Households may report facing more than one shock; only the main shock is reported here.",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  }
+]

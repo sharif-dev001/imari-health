@@ -1,0 +1,68 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of households",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "Any form of shock (unusual situation) 1st severe shocks",
+    "Non-poor": 35.6,
+    "Poor": 41.0,
+    "All": 37.1
+  },
+  {
+    "Unnamed: 0": "Main way household responded to shock was by:",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "  Buying less food",
+    "Non-poor": 21.4,
+    "Poor": 24.4,
+    "All": 22.3
+  },
+  {
+    "Unnamed: 0": "  Using savings, and/or borrowing",
+    "Non-poor": 23,
+    "Poor": 16.3,
+    "All": 20.9
+  },
+  {
+    "Unnamed: 0": "  Selling assets",
+    "Non-poor": 14.5,
+    "Poor": 11.5,
+    "All": 13.6
+  },
+  {
+    "Unnamed: 0": "  Working longer hours and/or working more",
+    "Non-poor": 28,
+    "Poor": 31.4,
+    "All": 29.1
+  },
+  {
+    "Unnamed: 0": "  Receiving help",
+    "Non-poor": 7.8,
+    "Poor": 9.5,
+    "All": 8.3
+  },
+  {
+    "Unnamed: 0": "  Other",
+    "Non-poor": 5.3,
+    "Poor": 6.9,
+    "All": 5.8
+  },
+  {
+    "Unnamed: 0": "  Total",
+    "Non-poor": 100,
+    "Poor": 100.0,
+    "All": 100.0
+  },
+  {
+    "Unnamed: 0": "Source: EICV7. Households may report responding to shock in more than one way",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  }
+]

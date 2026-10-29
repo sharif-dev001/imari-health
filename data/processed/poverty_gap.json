@@ -1,0 +1,79 @@
+[
+  {
+    "Unnamed: 0": "",
+    "EICV7 actual": 2024,
+    "EICV5 predicted adj.": 2017.0,
+    "Change": "2017 to 2024",
+    "Unnamed: 4": ""
+  },
+  {
+    "Unnamed: 0": "",
+    "EICV7 actual": "% of individuals who are poor",
+    "EICV5 predicted adj.": "",
+    "Change": "% point change",
+    "Unnamed: 4": "% change"
+  },
+  {
+    "Unnamed: 0": "Area of residence",
+    "EICV7 actual": "",
+    "EICV5 predicted adj.": "",
+    "Change": "",
+    "Unnamed: 4": ""
+  },
+  {
+    "Unnamed: 0": "  Urban",
+    "EICV7 actual": 12.7,
+    "EICV5 predicted adj.": 18.9,
+    "Change": -6.2,
+    "Unnamed: 4": -33
+  },
+  {
+    "Unnamed: 0": "  Rural",
+    "EICV7 actual": 30.6,
+    "EICV5 predicted adj.": 44.3,
+    "Change": -13.7,
+    "Unnamed: 4": -31
+  },
+  {
+    "Unnamed: 0": "Rwanda",
+    "EICV7 actual": 27.4,
+    "EICV5 predicted adj.": 39.8,
+    "Change": -12.4,
+    "Unnamed: 4": -31
+  },
+  {
+    "Unnamed: 0": "",
+    "EICV7 actual": "% poverty gap",
+    "EICV5 predicted adj.": "",
+    "Change": "",
+    "Unnamed: 4": ""
+  },
+  {
+    "Unnamed: 0": "  Urban",
+    "EICV7 actual": 2.92,
+    "EICV5 predicted adj.": 5.14,
+    "Change": -2.22,
+    "Unnamed: 4": -43
+  },
+  {
+    "Unnamed: 0": "  Rural",
+    "EICV7 actual": 6.75,
+    "EICV5 predicted adj.": 11.57,
+    "Change": -4.82,
+    "Unnamed: 4": -42
+  },
+  {
+    "Unnamed: 0": "Rwanda",
+    "EICV7 actual": 6.06,
+    "EICV5 predicted adj.": 10.43,
+    "Change": -4.36,
+    "Unnamed: 4": -42
+  },
+  {
+    "Unnamed: 0": "Source: EICV7 and EICV5. Notes: Predictions for 2017 are based on an OLS regression model of the log of consumption/ae p.a. in January 2024 prices, with multiple imputation. Adjusted prediction applies change based on EICV7 and EICV5 predictions to the actual EICV baseline. Urban and rural are defined using the 2012 definitions. ",
+    "EICV7 actual": "",
+    "EICV5 predicted adj.": "",
+    "Change": "",
+    "Unnamed: 4": ""
+  }
+]

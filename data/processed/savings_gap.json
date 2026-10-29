@@ -1,0 +1,80 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of households",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "Main source of income of head of household is:",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "  Farm wages",
+    "Non-poor": 11.8,
+    "Poor": 32.5,
+    "All": 16.5
+  },
+  {
+    "Unnamed: 0": "  Non-farm wages",
+    "Non-poor": 30.1,
+    "Poor": 18.9,
+    "All": 27.5
+  },
+  {
+    "Unnamed: 0": "  Independent farmer",
+    "Non-poor": 41.2,
+    "Poor": 41.0,
+    "All": 41.1
+  },
+  {
+    "Unnamed: 0": "  Independent non-farmer",
+    "Non-poor": 16.3,
+    "Poor": 7.0,
+    "All": 14.2
+  },
+  {
+    "Unnamed: 0": "  Others",
+    "Non-poor": 0.7,
+    "Poor": 0.6,
+    "All": 0.6
+  },
+  {
+    "Unnamed: 0": "  Total",
+    "Non-poor": 100,
+    "Poor": 100.0,
+    "All": 100.0
+  },
+  {
+    "Unnamed: 0": "Memo items: ",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "  Household has at least one savings account",
+    "Non-poor": 74.4,
+    "Poor": 53.2,
+    "All": 68.0
+  },
+  {
+    "Unnamed: 0": "  Household has at least one Momo",
+    "Non-poor": 90.3,
+    "Poor": 77.8,
+    "All": 86.6
+  },
+  {
+    "Unnamed: 0": "  Account/Mocash",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "Source: EICV7.",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  }
+]

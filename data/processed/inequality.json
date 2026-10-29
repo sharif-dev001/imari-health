@@ -1,0 +1,92 @@
+[
+  {
+    "Unnamed: 0": "  Estimate",
+    "Gini coefficient": 37,
+    "Theil’s T": 28.9
+  },
+  {
+    "Unnamed: 0": "  95% confidence interval",
+    "Gini coefficient": "36.0-38.0",
+    "Theil’s T": ""
+  },
+  {
+    "Unnamed: 0": "  By area",
+    "Gini coefficient": "",
+    "Theil’s T": ""
+  },
+  {
+    "Unnamed: 0": "    Urban",
+    "Gini coefficient": 43.8,
+    "Theil’s T": 36.7
+  },
+  {
+    "Unnamed: 0": "    Rural",
+    "Gini coefficient": 26.3,
+    "Theil’s T": 12.3
+  },
+  {
+    "Unnamed: 0": "      \"Within\"",
+    "Gini coefficient": "",
+    "Theil’s T": 23.1
+  },
+  {
+    "Unnamed: 0": "      \"Between\"",
+    "Gini coefficient": "",
+    "Theil’s T": 5.8
+  },
+  {
+    "Unnamed: 0": "  Between as % of total",
+    "Gini coefficient": "",
+    "Theil’s T": 20.0
+  },
+  {
+    "Unnamed: 0": "  By region",
+    "Gini coefficient": "",
+    "Theil’s T": ""
+  },
+  {
+    "Unnamed: 0": "    Kigali City",
+    "Gini coefficient": 44.5,
+    "Theil’s T": 37.5
+  },
+  {
+    "Unnamed: 0": "    South",
+    "Gini coefficient": 30.4,
+    "Theil’s T": 18.0
+  },
+  {
+    "Unnamed: 0": "    West",
+    "Gini coefficient": 30,
+    "Theil’s T": 16.6
+  },
+  {
+    "Unnamed: 0": "    North",
+    "Gini coefficient": 27.5,
+    "Theil’s T": 14.3
+  },
+  {
+    "Unnamed: 0": "    East",
+    "Gini coefficient": 31.4,
+    "Theil’s T": 19.4
+  },
+  {
+    "Unnamed: 0": "      \"Within\"",
+    "Gini coefficient": "",
+    "Theil’s T": 22.8
+  },
+  {
+    "Unnamed: 0": "      \"Between\"",
+    "Gini coefficient": "",
+    "Theil’s T": 6.1
+  },
+  {
+    "Unnamed: 0": "      Between as % of total",
+    "Gini coefficient": "",
+    "Theil’s T": 21.0
+  },
+  {
+    "Unnamed: 0": "Source: EICV7. Theil’s T is the same as the General Entropy measure GE(1). ",
+    "Gini coefficient": "",
+    "Theil’s T": ""
+  }
+]

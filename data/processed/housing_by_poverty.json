@@ -1,0 +1,68 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-poor": "% of households",
+    "Poor": "",
+    "All": ""
+  },
+  {
+    "Unnamed: 0": "Road < 20 minutes away",
+    "Non-poor": 91.1,
+    "Poor": 85.0,
+    "All": "89.7*"
+  },
+  {
+    "Unnamed: 0": "Total Improved Sanitation",
+    "Non-poor": 95.9,
+    "Poor": 89.4,
+    "All": "94.3*"
+  },
+  {
+    "Unnamed: 0": "HHs whose main source of drinking water is improved",
+    "Non-poor": 91.1,
+    "Poor": 85.0,
+    "All": "89.7*"
+  },
+  {
+    "Unnamed: 0": "Owner-occupied home",
+    "Non-poor": 70.4,
+    "Poor": 78.9,
+    "All": "72.4*"
+  },
+  {
+    "Unnamed: 0": "Corrugated iron roof",
+    "Non-poor": 78.6,
+    "Poor": 66.6,
+    "All": "75.8*"
+  },
+  {
+    "Unnamed: 0": "Umudugudu",
+    "Non-poor": 67.1,
+    "Poor": 70.3,
+    "All": "67.9*"
+  },
+  {
+    "Unnamed: 0": "Modern floor",
+    "Non-poor": 46.8,
+    "Poor": 14.5,
+    "All": "39.2*"
+  },
+  {
+    "Unnamed: 0": "Electricity from grid or solar panels",
+    "Non-poor": 77.1,
+    "Poor": 55.2,
+    "All": "72.0*"
+  },
+  {
+    "Unnamed: 0": "Charcoal or better",
+    "Non-poor": 29.6,
+    "Poor": 6.1,
+    "All": "24.1*"
+  },
+  {
+    "Unnamed: 0": "Source: EICV7. * = difference between proportions for poor and non-poor is statistically significant at the 95% level or higher.",
+    "Non-poor": "",
+    "Poor": "",
+    "All": ""
+  }
+]

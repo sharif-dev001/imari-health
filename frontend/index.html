@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imari Health — Financial Health Navigator for Rwanda</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.5/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/recharts@2.10.3/umd/Recharts.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        rwanda: { blue:'#00A1DE', yellow:'#FAD201', green:'#20603D', deepblue:'#003d7a' }
+      },
+      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+    }}
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .gradient-hero { background: linear-gradient(135deg, #003d7a 0%, #0095c8 50%, #20603D 100%); }
+  .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); }
+  .shadow-glow { box-shadow: 0 20px 60px rgba(0, 61, 122, 0.25), 0 4px 12px rgba(0,0,0,0.08); }
+  .btn-primary { background: linear-gradient(135deg, #003d7a 0%, #0095c8 100%); transition: all 0.3s; }
+  .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,61,122,0.35); }
+  .fade-in { animation: fadeIn 0.5s ease-out; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px);} to {opacity:1; transform:translateY(0);} }
+  .pulse-soft { animation: pulseSoft 2s ease-in-out infinite; }
+  @keyframes pulseSoft { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+  .input-modern { transition: all 0.2s; }
+  .input-modern:focus { outline:none; border-color:#0095c8; box-shadow: 0 0 0 4px rgba(0,149,200,0.1); }
+</style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+<header class="gradient-hero text-white shadow-xl">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-3xl">🌾</div>
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">Imari Health</h1>
+          <p class="text-sm opacity-90 font-medium">Financial Health Navigator for Rwanda</p>
+        </div>
+      </div>
+      <div class="glass rounded-full px-5 py-2 text-xs font-semibold tracking-wide uppercase">
+        NISR 2026 Big Data Hackathon · Track 2
+      </div>
+    </div>
+    <!-- TAB SWITCHER -->
+    <div id="tab-switcher"></div>
+  </div>
+</header>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+// ============================================================
+// EMBEDDED DATA — Extracted from EICV7 Poverty Profile 2023/24
+// Source: NISR (2025) ISBN 978-99977-43-09-1
+// ============================================================
+const DATA = {
+  // Poverty by province (EICV7 Table 5.1 / Table 0.1)
+  povertyByProvince: [
+    { province: "Kigali City", poverty: 9.1, extreme: 1.1, pop: 0.28 },
+    { province: "Southern",    poverty: 34.7, extreme: 7.4, pop: 0.22 },
+    { province: "Western",     poverty: 37.4, extreme: 9.0, pop: 0.21 },
+    { province: "Northern",    poverty: 20.2, extreme: 3.2, pop: 0.15 },
+    { province: "Eastern",     poverty: 26.8, extreme: 4.5, pop: 0.14 },
+  ],
+
+  // Poverty by district (EICV7 Annex B) — top 10 poorest
+  povertyByDistrict: [
+    { district: "Nyamagabe", poverty: 51.4 },
+    { district: "Gisagara",  poverty: 45.6 },
+    { district: "Rusizi",    poverty: 44.2 },
+    { district: "Nyanza",    poverty: 43.3 },
+    { district: "Nyamasheke",poverty: 42.8 },
+    { district: "Rutsiro",   poverty: 40.8 },
+    { district: "Nyaruguru", poverty: 39.7 },
+    { district: "Kamonyi",   poverty: 39.7 },
+    { district: "Rubavu",    poverty: 38.8 },
+    { district: "Karongi",   poverty: 38.2 },
+  ],
+
+  // Financial gaps by poverty status (EICV7 Table 6.9)
+  financialGaps: [
+    { indicator: "Savings account",  nonPoor: 74.4, poor: 53.2, gap: 21.2 },
+    { indicator: "Mobile money",     nonPoor: 90.3, poor: 77.8, gap: 12.5 },
+    { indicator: "Medical insurance",nonPoor: 88.6, poor: 76.6, gap: 12.0 },
+    { indicator: "Phone ownership",  nonPoor: 55.2, poor: 34.0, gap: 21.2 },
+    { indicator: "Radio ownership",  nonPoor: 67.8, poor: 42.7, gap: 25.1 },
+  ],
+
+  // Shock coping by poverty (EICV7 Table 6.11)
+  copingStrategies: [
+    { strategy: "Working more",         nonPoor: 28.0, poor: 31.4 },
+    { strategy: "Buying less food",     nonPoor: 21.4, poor: 24.4 },
+    { strategy: "Using savings/borrow", nonPoor: 23.0, poor: 16.3 },
+    { strategy: "Selling assets",       nonPoor: 14.5, poor: 11.5 },
+    { strategy: "Receiving help",       nonPoor: 7.8,  poor: 9.5 },
+  ],
+
+  // National headline numbers
+  headline: {
+    poverty2024: 27.4,
+    poverty2017: 39.8,
+    povertyChange: -12.4,
+    extremePoverty: 5.4,
+    gini: 37.0,
+    savingsGap: 21.2,
+    insuranceGap: 12.0,
+    mobileGap: 12.5,
+    fhHealthy: 10,
+    fhCoping: 57,
+    fhVulnerable: 31,
+    fhExtreme: 3,
+  },
+
+  // NFIR 2026-2030 FSDS targets
+  nfirTargets: [
+    { indicator: "Microfinance depositors", current: 8.7, target: 18.2, unit: "%", year: "2028/29" },
+    { indicator: "Insurance utilisation",   current: 23.9, target: 50.0, unit: "%", year: "2028/29" },
+    { indicator: "Gender gap (financial)",  current: 21.5, target: 5.0,  unit: "pp", year: "2028/29" },
+  ],
+};
+
+// ============================================================
+// API + CONSTANTS
+// ============================================================
+const API_URL = "http://localhost:8000/predict";
+
+const DEFAULTS = {
+  gender: "female", area: "rural", age_group: "25-34",
+  education: "primary_or_below", income_source: "independent_farmer",
+  has_mobile_money: 1, has_bank_account: 0, has_savings_account: 0,
+  has_insurance: 1, has_pension: 0, has_goal: 1,
+  goal_action: "nothing", runs_out: "often",
+  can_raise: "no", controls_finances: 0,
+};
+
+const SEGMENT_META = {
+  extremely_vulnerable: { label: "Extremely Vulnerable", color: "#dc2626", bg: "bg-red-50", text: "text-red-700", border: "border-red-200", icon: "⚠️" },
+  vulnerable:           { label: "Vulnerable",           color: "#ea580c", bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", icon: "🔶" },
+  coping:               { label: "Coping",               color: "#ca8a04", bg: "bg-yellow-50", text: "text-yellow-700", border: "border-yellow-200", icon: "🔸" },
+  healthy:              { label: "Financially Healthy",  color: "#16a34a", bg: "bg-green-50",  text: "text-green-700",  border: "border-green-200",  icon: "✅" },
+};
+
+// ============================================================
+// REUSABLE COMPONENTS
+// ============================================================
+function Select({ label, value, onChange, options, icon }) {
+  return (
+    <div>
+      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
+        {icon && <span className="mr-1">{icon}</span>}{label}
+      </label>
+      <select value={value} onChange={(e) => onChange(e.target.value)}
+        className="input-modern w-full px-4 py-3 border-2 border-slate-200 rounded-xl bg-white text-slate-800 font-medium text-sm">
+        {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+  );
+}
+
+function YesNo({ label, value, onChange, icon }) {
+  const isYes = value === 1;
+  return (
+    <div>
+      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
+        {icon && <span className="mr-1">{icon}</span>}{label}
+      </label>
+      <div className="grid grid-cols-2 gap-2">
+        <button onClick={() => onChange(1)}
+          className={`py-3 rounded-xl font-semibold text-sm transition-all ${
+            isYes ? 'bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue text-white shadow-md'
+                  : 'bg-white border-2 border-slate-200 text-slate-600 hover:border-slate-300'}`}>Yes</button>
+        <button onClick={() => onChange(0)}
+          className={`py-3 rounded-xl font-semibold text-sm transition-all ${
+            !isYes ? 'bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue text-white shadow-md'
+                   : 'bg-white border-2 border-slate-200 text-slate-600 hover:border-slate-300'}`}>No</button>
+      </div>
+    </div>
+  );
+}
+
+function ScoreGauge({ score, segment }) {
+  const meta = SEGMENT_META[segment];
+  const radius = 90, circ = 2 * Math.PI * radius;
+  const offset = circ - (score / 100) * circ;
+  return (
+    <div className="flex flex-col items-center py-6">
+      <div className="relative w-56 h-56">
+        <svg className="transform -rotate-90 w-full h-full">
+          <circle cx="112" cy="112" r={radius} stroke="#e2e8f0" strokeWidth="14" fill="transparent" />
+          <circle cx="112" cy="112" r={radius} stroke={meta.color} strokeWidth="14" fill="transparent"
+            strokeLinecap="round" strokeDasharray={circ} strokeDashoffset={offset}
+            style={{ transition: 'stroke-dashoffset 1s ease-out' }} />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="text-6xl font-black" style={{ color: meta.color }}>{score}</div>
+          <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">out of 100</div>
+        </div>
+      </div>
+      <div className={`mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full ${meta.bg} ${meta.border} border-2`}>
+        <span className="text-lg">{meta.icon}</span>
+        <span className={`font-bold text-sm ${meta.text}`}>{meta.label}</span>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// TAB: CITIZEN VIEW
+// ============================================================
+function CitizenView() {
+  const [answers, setAnswers] = useState(DEFAULTS);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const update = (k, v) => setAnswers({ ...answers, [k]: v });
+
+  const submit = async () => {
+    setLoading(true); setError(null); setResult(null);
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(answers),
+      });
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      setResult(await res.json());
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) { setError(e.message); }
+    finally { setLoading(false); }
+  };
+
+  const reset = () => { setResult(null); setError(null); setAnswers(DEFAULTS); };
+
+  if (result) return (
+    <div className="fade-in space-y-6">
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <ScoreGauge score={result.prediction.score} segment={result.prediction.segment} />
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">Your Financial Health</h2>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              Based on the FinScope 2024 framework, your financial health is measured across
+              four dimensions: managing day-to-day, taking opportunities, resilience to shocks,
+              and control over your finances.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {Object.entries(result.prediction.probabilities).map(([seg, prob]) => {
+                const m = SEGMENT_META[seg];
+                return (
+                  <div key={seg} className={`${m.bg} rounded-xl p-3 border ${m.border}`}>
+                    <div className={`text-xs font-semibold ${m.text} uppercase tracking-wide`}>{m.label}</div>
+                    <div className={`text-2xl font-bold ${m.text} mt-1`}>{(prob * 100).toFixed(0)}%</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-br from-rwanda-deepblue via-rwanda-blue to-rwanda-green rounded-3xl shadow-glow p-1">
+        <div className="bg-white rounded-[22px] p-8">
+          <div className="flex items-start gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue flex items-center justify-center text-3xl shrink-0">🎯</div>
+            <div className="flex-1">
+              <div className="text-xs font-bold uppercase tracking-wider text-rwanda-deepblue mb-2">Your Recommended Next Action</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">{result.recommendation.title}</h3>
+              <div className="space-y-4">
+                <div className="bg-slate-50 rounded-2xl p-5">
+                  <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Why this matters</div>
+                  <p className="text-slate-700 leading-relaxed">{result.recommendation.why}</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 rounded-2xl p-5 border border-blue-100">
+                    <div className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">What to do</div>
+                    <p className="text-blue-900 font-medium">{result.recommendation.action}</p>
+                  </div>
+                  <div className="bg-green-50 rounded-2xl p-5 border border-green-100">
+                    <div className="text-xs font-bold uppercase tracking-wider text-green-700 mb-2">Cost</div>
+                    <p className="text-green-900 font-medium">{result.recommendation.cost}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                <span>📚</span><span className="italic">Source: {result.recommendation.source}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <h3 className="text-lg font-bold text-slate-900 mb-2">What shaped your score</h3>
+        <p className="text-slate-500 text-sm mb-6">Positive values pushed your score up; negative values pulled it down.</p>
+        <div className="space-y-3">
+          {result.prediction.top_contributions.slice(0, 6).map((c, i) => {
+            const pos = c.shap > 0;
+            const width = Math.min(Math.abs(c.shap) * 40, 100);
+            return (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-48 text-sm font-semibold text-slate-700 truncate">{c.feature.replace(/_/g, " ")}</div>
+                <div className="flex-1 h-6 bg-slate-100 rounded-full overflow-hidden">
+                  <div className={`h-full rounded-full ${pos ? 'bg-gradient-to-r from-green-400 to-green-600' : 'bg-gradient-to-r from-red-400 to-red-600'}`}
+                    style={{ width: `${width}%` }}></div>
+                </div>
+                <div className={`w-16 text-right text-sm font-bold ${pos ? 'text-green-600' : 'text-red-600'}`}>
+                  {pos ? '+' : ''}{c.shap.toFixed(2)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <button onClick={reset}
+        className="w-full bg-white border-2 border-slate-200 text-slate-700 font-bold py-4 rounded-2xl hover:border-slate-300 hover:bg-slate-50 transition-all">
+        ← Check Another Person
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="fade-in">
+      <div className="bg-white rounded-3xl shadow-glow p-8 mb-6">
+        <div className="flex items-start gap-4 mb-6">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue flex items-center justify-center text-white text-xl font-bold shrink-0">1</div>
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900">Tell us about yourself</h2>
+            <p className="text-slate-500 text-sm mt-1">14 quick questions. Your score is based on the FinScope 2024 financial health framework.</p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Select icon="👤" label="Gender" value={answers.gender} onChange={(v)=>update("gender",v)}
+            options={[{value:"female",label:"Female"},{value:"male",label:"Male"}]} />
+          <Select icon="📍" label="Area of residence" value={answers.area} onChange={(v)=>update("area",v)}
+            options={[{value:"rural",label:"Rural"},{value:"urban",label:"Urban"}]} />
+          <Select icon="🎂" label="Age group" value={answers.age_group} onChange={(v)=>update("age_group",v)}
+            options={[{value:"16-24",label:"16-24"},{value:"25-34",label:"25-34"},{value:"35-44",label:"35-44"},{value:"45-54",label:"45-54"},{value:"55+",label:"55+"}]} />
+          <Select icon="🎓" label="Education" value={answers.education} onChange={(v)=>update("education",v)}
+            options={[{value:"primary_or_below",label:"Primary or below"},{value:"secondary",label:"Secondary"},{value:"tertiary",label:"Tertiary"}]} />
+          <Select icon="💼" label="Main income source" value={answers.income_source} onChange={(v)=>update("income_source",v)}
+            options={[{value:"farm_wage",label:"Farm wage"},{value:"non_farm_wage",label:"Non-farm wage"},{value:"independent_farmer",label:"Independent farmer"},{value:"independent_non_farmer",label:"Independent non-farmer"}]} />
+          <Select icon="🎯" label="What are you doing about your goal?" value={answers.goal_action} onChange={(v)=>update("goal_action",v)}
+            options={[{value:"saving_formally",label:"Saving formally"},{value:"saving_informally",label:"Saving informally"},{value:"nothing",label:"Nothing"},{value:"borrowing",label:"Borrowing"}]} />
+          <Select icon="💸" label="Do you run out of money before month end?" value={answers.runs_out} onChange={(v)=>update("runs_out",v)}
+            options={[{value:"often",label:"Often"},{value:"sometimes",label:"Sometimes"},{value:"rarely",label:"Rarely"}]} />
+          <Select icon="🆘" label="Can you raise 50,000 RWF in an emergency?" value={answers.can_raise} onChange={(v)=>update("can_raise",v)}
+            options={[{value:"yes",label:"Yes"},{value:"with_difficulty",label:"With difficulty"},{value:"no",label:"No"}]} />
+        </div>
+        <hr className="my-8 border-slate-100" />
+        <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4">Do you currently have any of the following?</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <YesNo icon="📱" label="Mobile money account" value={answers.has_mobile_money} onChange={(v)=>update("has_mobile_money",v)} />
+          <YesNo icon="🏦" label="Bank account" value={answers.has_bank_account} onChange={(v)=>update("has_bank_account",v)} />
+          <YesNo icon="🐷" label="Savings account" value={answers.has_savings_account} onChange={(v)=>update("has_savings_account",v)} />
+          <YesNo icon="🏥" label="Medical insurance" value={answers.has_insurance} onChange={(v)=>update("has_insurance",v)} />
+          <YesNo icon="👴" label="Pension (Ejo Heza / RSSB)" value={answers.has_pension} onChange={(v)=>update("has_pension",v)} />
+          <YesNo icon="🎯" label="A financial goal?" value={answers.has_goal} onChange={(v)=>update("has_goal",v)} />
+        </div>
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <YesNo icon="🧭" label="Do you feel in control of your finances?" value={answers.controls_finances} onChange={(v)=>update("controls_finances",v)} />
+        </div>
+        <button onClick={submit} disabled={loading}
+          className="btn-primary mt-10 w-full text-white font-bold py-4 rounded-2xl text-base shadow-lg disabled:opacity-60">
+          {loading ? <span className="pulse-soft">🔍 Analyzing your financial health...</span> : "Get My Financial Health Score →"}
+        </button>
+      </div>
+
+      {error && (
+        <div className="bg-red-50 border-l-4 border-red-500 rounded-2xl p-6 mb-6">
+          <div className="font-bold text-red-700 mb-1">Something went wrong</div>
+          <div className="text-red-600 text-sm">{error}</div>
+          <div className="text-red-500 text-xs mt-2">Make sure the backend is running on http://localhost:8000</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================
+// TAB: POLICY DASHBOARD
+// ============================================================
+function PolicyDashboard() {
+  const h = DATA.headline;
+
+  return (
+    <div className="fade-in space-y-6">
+
+      {/* Headline KPI cards */}
+      <div className="grid md:grid-cols-4 gap-4">
+        <KPI title="Poverty Rate 2024"     value={`${h.poverty2024}%`} subtitle={`↓ from ${h.poverty2017}% in 2017`} accent="red" />
+        <KPI title="Extreme Poverty"       value={`${h.extremePoverty}%`} subtitle="↓ from 11.3% in 2017"      accent="orange" />
+        <KPI title="Savings Gap"           value={`${h.savingsGap}pp`} subtitle="Poor vs non-poor"             accent="blue" />
+        <KPI title="Financial Health"      value={`${h.fhHealthy}%`} subtitle="Only 1 in 10 adults healthy"     accent="green" />
+      </div>
+
+      {/* Poverty by Province chart */}
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <SectionHeader title="Poverty Rate by Province" subtitle="EICV7 2023/24 — Table 5.1. Western and Southern provinces lag behind." />
+        <Recharts.ResponsiveContainer width="100%" height={300}>
+          <Recharts.BarChart data={DATA.povertyByProvince} layout="vertical" margin={{ left: 40, right: 40 }}>
+            <Recharts.CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+            <Recharts.XAxis type="number" domain={[0, 45]} tickFormatter={(v) => `${v}%`} />
+            <Recharts.YAxis type="category" dataKey="province" width={110} tick={{ fontSize: 13, fontWeight: 600 }} />
+            <Recharts.Tooltip formatter={(v) => `${v}%`} />
+            <Recharts.Legend />
+            <Recharts.Bar dataKey="poverty" fill="#003d7a" name="Total poverty" radius={[0, 6, 6, 0]} />
+            <Recharts.Bar dataKey="extreme" fill="#dc2626" name="Extreme poverty" radius={[0, 6, 6, 0]} />
+          </Recharts.BarChart>
+        </Recharts.ResponsiveContainer>
+      </div>
+
+      {/* Financial gaps */}
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <SectionHeader title="Financial Inclusion Gap: Poor vs Non-Poor" subtitle="EICV7 2023/24 — Table 6.9. The savings gap is the largest at 21 percentage points." />
+        <Recharts.ResponsiveContainer width="100%" height={320}>
+          <Recharts.BarChart data={DATA.financialGaps} margin={{ top: 20, right: 30 }}>
+            <Recharts.CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+            <Recharts.XAxis dataKey="indicator" tick={{ fontSize: 11 }} angle={-15} textAnchor="end" height={70} />
+            <Recharts.YAxis domain={[0, 100]} tickFormatter={(v) => `${v}%`} />
+            <Recharts.Tooltip formatter={(v) => `${v}%`} />
+            <Recharts.Legend />
+            <Recharts.Bar dataKey="nonPoor" fill="#16a34a" name="Non-poor" radius={[6, 6, 0, 0]} />
+            <Recharts.Bar dataKey="poor"    fill="#dc2626" name="Poor"     radius={[6, 6, 0, 0]} />
+          </Recharts.BarChart>
+        </Recharts.ResponsiveContainer>
+      </div>
+
+      {/* Coping strategies */}
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <SectionHeader title="How Households Cope with Shocks" subtitle="EICV7 2023/24 — Table 6.11. Poor households buy less food and work more — not use financial products." />
+        <Recharts.ResponsiveContainer width="100%" height={300}>
+          <Recharts.BarChart data={DATA.copingStrategies}>
+            <Recharts.CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+            <Recharts.XAxis dataKey="strategy" tick={{ fontSize: 11 }} angle={-15} textAnchor="end" height={70} />
+            <Recharts.YAxis tickFormatter={(v) => `${v}%`} />
+            <Recharts.Tooltip formatter={(v) => `${v}%`} />
+            <Recharts.Legend />
+            <Recharts.Bar dataKey="nonPoor" fill="#16a34a" name="Non-poor" radius={[6, 6, 0, 0]} />
+            <Recharts.Bar dataKey="poor"    fill="#dc2626" name="Poor"     radius={[6, 6, 0, 0]} />
+          </Recharts.BarChart>
+        </Recharts.ResponsiveContainer>
+      </div>
+
+      {/* Poorest districts */}
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <SectionHeader title="10 Poorest Districts" subtitle="EICV7 2023/24 — Annex B. Target these districts for financial inclusion interventions." />
+        <Recharts.ResponsiveContainer width="100%" height={320}>
+          <Recharts.BarChart data={DATA.povertyByDistrict} layout="vertical" margin={{ left: 40, right: 40 }}>
+            <Recharts.CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+            <Recharts.XAxis type="number" domain={[0, 60]} tickFormatter={(v) => `${v}%`} />
+            <Recharts.YAxis type="category" dataKey="district" width={120} tick={{ fontSize: 13, fontWeight: 600 }} />
+            <Recharts.Tooltip formatter={(v) => `${v}%`} />
+            <Recharts.Bar dataKey="poverty" fill="#003d7a" name="Poverty rate" radius={[0, 6, 6, 0]} />
+          </Recharts.BarChart>
+        </Recharts.ResponsiveContainer>
+      </div>
+
+      {/* NFIR Target tracker */}
+      <div className="bg-white rounded-3xl shadow-glow p-8">
+        <SectionHeader title="NFIR 2026–2030 Target Tracker" subtitle="How far is Rwanda from its National Financial Inclusion Roadmap targets?" />
+        <div className="space-y-6 mt-6">
+          {DATA.nfirTargets.map((t, i) => {
+            const progress = t.indicator.includes("Gender") ? 
+              Math.min(100, Math.max(0, ((t.current - t.target) / t.current) * 100)) :
+              Math.min(100, (t.current / t.target) * 100);
+            return (
+              <div key={i}>
+                <div className="flex justify-between mb-2">
+                  <div className="font-semibold text-slate-800">{t.indicator}</div>
+                  <div className="text-sm text-slate-500">
+                    Current <span className="font-bold text-rwanda-deepblue">{t.current}{t.unit}</span> · Target <span className="font-bold text-rwanda-green">{t.target}{t.unit} by {t.year}</span>
+                  </div>
+                </div>
+                <div className="h-4 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-rwanda-deepblue to-rwanda-green rounded-full"
+                    style={{ width: `${progress}%` }}></div>
+                </div>
+                <div className="text-xs text-slate-500 mt-1">{progress.toFixed(0)}% of the way to target</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Policy actions */}
+      <div className="bg-gradient-to-br from-rwanda-deepblue via-rwanda-blue to-rwanda-green rounded-3xl shadow-glow p-1">
+        <div className="bg-white rounded-[22px] p-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">Recommended Policy Actions</h3>
+          <p className="text-slate-500 mb-6">Based on the data gaps above and FinScope 2024's own recommendations.</p>
+          <div className="space-y-4">
+            <PolicyAction
+              number="01"
+              title="Expand SACCO savings products in Southern & Western provinces"
+              detail="Poverty is 34.7–37.4% in these provinces. Savings account ownership is 21 points lower for poor households. SACCOs are the natural delivery channel."
+              source="EICV7 Table 5.1, Table 6.9" />
+            <PolicyAction
+              number="02"
+              title="Layer microinsurance on Mutuelle de Santé enrollment"
+              detail="12-point insurance gap between poor and non-poor. Only 1% of people who experienced shocks claimed insurance. Bundle medical + agricultural insurance at SACCO points."
+              source="EICV7 Table 6.6, Table 6.11" />
+            <PolicyAction
+              number="03"
+              title="Convert mobile money users into savings users"
+              detail="77.8% of poor households have mobile money, but only 53.2% have a savings account. Introduce interest-bearing mobile savings (as FinScope 2024 recommends)."
+              source="EICV7 Table 6.9; FinScope 2024 p.75" />
+            <PolicyAction
+              number="04"
+              title="Target the 10 poorest districts with bundled interventions"
+              detail="Nyamagabe, Gisagara, Rusizi top the list. Coordinate SACCO expansion, insurance enrollment, and Ejo Heza pension registration in these districts."
+              source="EICV7 Annex B" />
+          </div>
+        </div>
+      </div>
+
+      {/* Source footer */}
+      <div className="text-center text-slate-500 text-xs">
+        Data: EICV7 Poverty Profile 2023/24 (NISR 2025, ISBN 978-99977-43-09-1) · FinScope 2024 (AFR/NISR) · NFIR 2026–2030 (BNR/MINECOFIN)
+      </div>
+    </div>
+  );
+}
+
+function KPI({ title, value, subtitle, accent }) {
+  const colors = {
+    red:    { bg: "bg-red-50",    text: "text-red-700",    border: "border-red-200" },
+    orange: { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+    blue:   { bg: "bg-blue-50",   text: "text-blue-700",   border: "border-blue-200" },
+    green:  { bg: "bg-green-50",  text: "text-green-700",  border: "border-green-200" },
+  }[accent];
+  return (
+    <div className={`${colors.bg} border-2 ${colors.border} rounded-2xl p-5`}>
+      <div className={`text-xs font-bold uppercase tracking-wider ${colors.text} mb-2`}>{title}</div>
+      <div className={`text-4xl font-black ${colors.text}`}>{value}</div>
+      <div className="text-xs text-slate-500 mt-2">{subtitle}</div>
+    </div>
+  );
+}
+
+function SectionHeader({ title, subtitle }) {
+  return (
+    <div className="mb-6">
+      <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+      <p className="text-slate-500 text-sm mt-1">{subtitle}</p>
+    </div>
+  );
+}
+
+function PolicyAction({ number, title, detail, source }) {
+  return (
+    <div className="flex gap-4 p-5 bg-slate-50 rounded-2xl">
+      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue text-white flex items-center justify-center font-black shrink-0">
+        {number}
+      </div>
+      <div>
+        <div className="font-bold text-slate-900 text-base">{title}</div>
+        <div className="text-slate-600 text-sm mt-2 leading-relaxed">{detail}</div>
+        <div className="text-xs text-slate-400 italic mt-3">📚 {source}</div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// MAIN APP WITH TABS
+// ============================================================
+function App() {
+  const [tab, setTab] = useState("citizen");
+
+  return (
+    <main className="max-w-7xl mx-auto px-6 -mt-6 pb-16">
+      <div className="flex justify-center mb-6">
+        <div className="bg-white rounded-2xl shadow-glow p-2 inline-flex gap-2">
+          <button onClick={() => setTab("citizen")}
+            className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
+              tab === "citizen" ? "bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue text-white shadow-md"
+                                : "text-slate-600 hover:bg-slate-100"}`}>
+            👤 For Citizens
+          </button>
+          <button onClick={() => setTab("policy")}
+            className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
+              tab === "policy" ? "bg-gradient-to-br from-rwanda-deepblue to-rwanda-blue text-white shadow-md"
+                               : "text-slate-600 hover:bg-slate-100"}`}>
+            📊 For Policymakers
+          </button>
+        </div>
+      </div>
+
+      {tab === "citizen" ? <CitizenView /> : <PolicyDashboard />}
+
+      <footer className="mt-16 text-center">
+        <div className="inline-flex items-center gap-6 text-xs text-slate-500 bg-white rounded-full px-6 py-3 shadow-sm border border-slate-100">
+          <span className="font-semibold">Data sources:</span>
+          <span>FinScope 2024 (AFR/NISR)</span>
+          <span className="text-slate-300">·</span>
+          <span>EICV7 Poverty Profile 2023/24</span>
+        </div>
+        <p className="text-slate-400 text-xs mt-4">NISR 2026 Big Data Hackathon · Track 2 — Financial Inclusion & Poverty Reduction</p>
+      </footer>
+    </main>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

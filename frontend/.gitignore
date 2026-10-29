@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+backend/models/
+backend/venv/
+env/
+
+# Data (too large for GitHub)
+data/raw/
+data/processed/*.csv
+
+# OS
+.DS_Store
+Thumbs.db

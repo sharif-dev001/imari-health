@@ -1,0 +1,182 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Energy from grid or": "solar panels",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "",
+    "Energy from grid or": "EICV5",
+    "Unnamed: 2": "EICV7",
+    "Got care, if ill (%)": "EICV5",
+    "Unnamed: 4": "EICV7",
+    "Improved sanitation": "EICV5",
+    "Unnamed: 6": "EICV7"
+  },
+  {
+    "Unnamed: 0": "",
+    "Energy from grid or": "% of households",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "National",
+    "Energy from grid or": 34.4,
+    "Unnamed: 2": 72,
+    "Got care, if ill (%)": 52.2,
+    "Unnamed: 4": 64.6,
+    "Improved sanitation": 86.2,
+    "Unnamed: 6": 94.3
+  },
+  {
+    "Unnamed: 0": "Province",
+    "Energy from grid or": "",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "  City of Kigali",
+    "Energy from grid or": 79.2,
+    "Unnamed: 2": 91.7,
+    "Got care, if ill (%)": 54.8,
+    "Unnamed: 4": 63.8,
+    "Improved sanitation": 94.5,
+    "Unnamed: 6": 99.4
+  },
+  {
+    "Unnamed: 0": "  Southern",
+    "Energy from grid or": 22.7,
+    "Unnamed: 2": 63.7,
+    "Got care, if ill (%)": 49.6,
+    "Unnamed: 4": 65.6,
+    "Improved sanitation": 74.6,
+    "Unnamed: 6": 90.8
+  },
+  {
+    "Unnamed: 0": "  Western",
+    "Energy from grid or": 31.7,
+    "Unnamed: 2": 71.3,
+    "Got care, if ill (%)": 47.3,
+    "Unnamed: 4": 63,
+    "Improved sanitation": 88.1,
+    "Unnamed: 6": 94.5
+  },
+  {
+    "Unnamed: 0": "  Northern",
+    "Energy from grid or": 22.8,
+    "Unnamed: 2": 67.3,
+    "Got care, if ill (%)": 52.3,
+    "Unnamed: 4": 64.9,
+    "Improved sanitation": 86.5,
+    "Unnamed: 6": 95.1
+  },
+  {
+    "Unnamed: 0": "  Eastern",
+    "Energy from grid or": 27.7,
+    "Unnamed: 2": 71.3,
+    "Got care, if ill (%)": 57.3,
+    "Unnamed: 4": 65.4,
+    "Improved sanitation": 90,
+    "Unnamed: 6": 93.9
+  },
+  {
+    "Unnamed: 0": "Residence area",
+    "Energy from grid or": "",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "  Urban",
+    "Energy from grid or": 76.1,
+    "Unnamed: 2": 88.1,
+    "Got care, if ill (%)": 55.5,
+    "Unnamed: 4": 65.5,
+    "Improved sanitation": 93.6,
+    "Unnamed: 6": 98.3
+  },
+  {
+    "Unnamed: 0": "  Rural",
+    "Energy from grid or": 24.4,
+    "Unnamed: 2": 65.3,
+    "Got care, if ill (%)": 51.5,
+    "Unnamed: 4": 64.3,
+    "Improved sanitation": 84.4,
+    "Unnamed: 6": 92.7
+  },
+  {
+    "Unnamed: 0": "Quintile",
+    "Energy from grid or": "",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "  Lower",
+    "Energy from grid or": 9,
+    "Unnamed: 2": 53.2,
+    "Got care, if ill (%)": 41.8,
+    "Unnamed: 4": 57.4,
+    "Improved sanitation": 76.3,
+    "Unnamed: 6": 88.6
+  },
+  {
+    "Unnamed: 0": "  Mid-lower",
+    "Energy from grid or": 16.4,
+    "Unnamed: 2": 62.4,
+    "Got care, if ill (%)": 46.7,
+    "Unnamed: 4": 62.8,
+    "Improved sanitation": 81,
+    "Unnamed: 6": 92.2
+  },
+  {
+    "Unnamed: 0": "  Mid",
+    "Energy from grid or": 24.5,
+    "Unnamed: 2": 68.4,
+    "Got care, if ill (%)": 51.6,
+    "Unnamed: 4": 64.2,
+    "Improved sanitation": 85.9,
+    "Unnamed: 6": 94
+  },
+  {
+    "Unnamed: 0": "  Mid-upper",
+    "Energy from grid or": 36.5,
+    "Unnamed: 2": 76.2,
+    "Got care, if ill (%)": 56,
+    "Unnamed: 4": 68.2,
+    "Improved sanitation": 88.5,
+    "Unnamed: 6": 96
+  },
+  {
+    "Unnamed: 0": "  Upper",
+    "Energy from grid or": 68.6,
+    "Unnamed: 2": 92.6,
+    "Got care, if ill (%)": 60.1,
+    "Unnamed: 4": 68.8,
+    "Improved sanitation": 94.2,
+    "Unnamed: 6": 99
+  },
+  {
+    "Unnamed: 0": "Sources: EICV5 and EICV7. Note: Quintiles refer to real consumption per adult equivalent.",
+    "Energy from grid or": "",
+    "Unnamed: 2": "",
+    "Got care, if ill (%)": "",
+    "Unnamed: 4": "",
+    "Improved sanitation": "",
+    "Unnamed: 6": ""
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "Unnamed: 0": "",
+    "EICV7 actual": 2024,
+    "EICV5 predicted adj.": 2017.0,
+    "Change": "2017 to 2024",
+    "Unnamed: 4": "",
+    "95% confidence interval": 2024,
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "",
+    "EICV7 actual": "% of individuals who are poor",
+    "EICV5 predicted adj.": "",
+    "Change": "% point change",
+    "Unnamed: 4": "% change",
+    "95% confidence interval": "Lower bound",
+    "Unnamed: 6": "Upper bound"
+  },
+  {
+    "Unnamed: 0": "Province",
+    "EICV7 actual": "",
+    "EICV5 predicted adj.": "",
+    "Change": "",
+    "Unnamed: 4": "",
+    "95% confidence interval": "",
+    "Unnamed: 6": ""
+  },
+  {
+    "Unnamed: 0": "  Kigali City",
+    "EICV7 actual": 9.1,
+    "EICV5 predicted adj.": 14.3,
+    "Change": -5.3,
+    "Unnamed: 4": -37,
+    "95% confidence interval": 7,
+    "Unnamed: 6": 11.2
+  },
+  {
+    "Unnamed: 0": "  South",
+    "EICV7 actual": 34.7,
+    "EICV5 predicted adj.": 47.6,
+    "Change": -12.9,
+    "Unnamed: 4": -27,
+    "95% confidence interval": 32.7,
+    "Unnamed: 6": 36.7
+  },
+  {
+    "Unnamed: 0": "  West",
+    "EICV7 actual": 37.4,
+    "EICV5 predicted adj.": 51.7,
+    "Change": -14.3,
+    "Unnamed: 4": -28,
+    "95% confidence interval": 35,
+    "Unnamed: 6": 39.8
+  },
+  {
+    "Unnamed: 0": "  North",
+    "EICV7 actual": 20.2,
+    "EICV5 predicted adj.": 33.0,
+    "Change": -12.8,
+    "Unnamed: 4": -39,
+    "95% confidence interval": 18.1,
+    "Unnamed: 6": 22.3
+  },
+  {
+    "Unnamed: 0": "  East",
+    "EICV7 actual": 26.8,
+    "EICV5 predicted adj.": 39.1,
+    "Change": -12.4,
+    "Unnamed: 4": -32,
+    "95% confidence interval": 24.7,
+    "Unnamed: 6": 28.8
+  },
+  {
+    "Unnamed: 0": "Rwanda",
+    "EICV7 actual": 27.4,
+    "EICV5 predicted adj.": 39.8,
+    "Change": -12.4,
+    "Unnamed: 4": -31,
+    "95% confidence interval": 26.4,
+    "Unnamed: 6": 28.4
+  },
+  {
+    "Unnamed: 0": "Source: EICV7,NISR",
+    "EICV7 actual": "",
+    "EICV5 predicted adj.": "",
+    "Change": "",
+    "Unnamed: 4": "",
+    "95% confidence interval": "",
+    "Unnamed: 6": ""
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-Poor": "% of individuals",
+    "Poor": "",
+    "Total": ""
+  },
+  {
+    "Unnamed: 0": "All Rwanda",
+    "Non-Poor": "",
+    "Poor": "",
+    "Total": ""
+  },
+  {
+    "Unnamed: 0": "    Time (minutes) to health facility",
+    "Non-Poor": 30.4,
+    "Poor": 34.8,
+    "Total": 31.6
+  },
+  {
+    "Unnamed: 0": "    Covered by any medical insurance",
+    "Non-Poor": 88.6,
+    "Poor": 76.6,
+    "Total": 85.3
+  },
+  {
+    "Unnamed: 0": "    Ill in past four weeks",
+    "Non-Poor": 27.4,
+    "Poor": 26.2,
+    "Total": 27.1
+  },
+  {
+    "Unnamed: 0": "    Got care, if ill (%)",
+    "Non-Poor": 73.2,
+    "Poor": 64.5,
+    "Total": 70.9
+  },
+  {
+    "Unnamed: 0": "Urban",
+    "Non-Poor": "",
+    "Poor": "",
+    "Total": ""
+  },
+  {
+    "Unnamed: 0": "    Time (minutes) to health facility",
+    "Non-Poor": 23.1,
+    "Poor": 27.0,
+    "Total": 23.8
+  },
+  {
+    "Unnamed: 0": "    Covered by any medical insurance",
+    "Non-Poor": 88.6,
+    "Poor": 67.3,
+    "Total": 85.1
+  },
+  {
+    "Unnamed: 0": "    Ill in past four weeks",
+    "Non-Poor": 26.7,
+    "Poor": 27.2,
+    "Total": 26.7
+  },
+  {
+    "Unnamed: 0": "    Got care, if ill (%)",
+    "Non-Poor": 73.1,
+    "Poor": 90.2,
+    "Total": 71.0
+  },
+  {
+    "Unnamed: 0": "Rural",
+    "Non-Poor": "",
+    "Poor": "",
+    "Total": ""
+  },
+  {
+    "Unnamed: 0": "    Time (minutes) to health facility",
+    "Non-Poor": 33.6,
+    "Poor": 36.4,
+    "Total": 34.5
+  },
+  {
+    "Unnamed: 0": "    Covered by any medical insurance",
+    "Non-Poor": 88.6,
+    "Poor": 78.5,
+    "Total": 85.4
+  },
+  {
+    "Unnamed: 0": "    Ill in past four weeks",
+    "Non-Poor": 27.8,
+    "Poor": 26.0,
+    "Total": 27.2
+  },
+  {
+    "Unnamed: 0": "    Got care, if ill (%)",
+    "Non-Poor": 73.3,
+    "Poor": 65.5,
+    "Total": 70.9
+  },
+  {
+    "Unnamed: 0": "Source: EICV7. Note: All values for poor and non-poor individuals are statistically significantly different from the national rates (with 95% confidence or higher), except for the illness rate in urban areas.",
+    "Non-Poor": "",
+    "Poor": "",
+    "Total": ""
+  }
+]

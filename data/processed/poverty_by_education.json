@@ -1,0 +1,65 @@
+[
+  {
+    "Unnamed: 0": "",
+    "Non-Poor": "% of individuals",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": "%"
+  },
+  {
+    "Unnamed: 0": "Level of education completed",
+    "Non-Poor": "",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  },
+  {
+    "Unnamed: 0": "  None/Below primary",
+    "Non-Poor": 53.4,
+    "Poor": 78.2,
+    "All": 59.2,
+    "Poverty rate": 30.9
+  },
+  {
+    "Unnamed: 0": "  Primary",
+    "Non-Poor": 27.1,
+    "Poor": 19.3,
+    "All": 25.3,
+    "Poverty rate": 17.8
+  },
+  {
+    "Unnamed: 0": "  Lower_secondary",
+    "Non-Poor": 4.9,
+    "Poor": 1.6,
+    "All": 4.1,
+    "Poverty rate": 9
+  },
+  {
+    "Unnamed: 0": "  Upper_secondary",
+    "Non-Poor": 8,
+    "Poor": 0.9,
+    "All": 6.3,
+    "Poverty rate": 3.3
+  },
+  {
+    "Unnamed: 0": "  University",
+    "Non-Poor": 6.6,
+    "Poor": "",
+    "All": 5.0,
+    "Poverty rate": 0
+  },
+  {
+    "Unnamed: 0": "Total",
+    "Non-Poor": 100,
+    "Poor": 100.0,
+    "All": 100.0,
+    "Poverty rate": 27.4
+  },
+  {
+    "Unnamed: 0": "Source: EICV7. Note: All the poverty rates in the final column are different from the national poverty rate at the 95% level of significance.",
+    "Non-Poor": "",
+    "Poor": "",
+    "All": "",
+    "Poverty rate": ""
+  }
+]
